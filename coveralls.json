@@ -1,0 +1,13 @@
+{
+    "skip_files": [
+        "lib/chat_live_view/application.ex",
+        "lib/chat_live_view_web/components/*",
+        "lib/chat_live_view_web/router.ex",
+        "lib/chat_live_view_web/telemetry.ex",
+        "test/support/data_case.ex"
+    ],
+    "coverage_options": {
+        "treat_no_relevant_lines_as_covered": true,
+        "minimum_coverage": 10
+    }
+}
