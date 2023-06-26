@@ -9,6 +9,14 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
 
+## Tools version
+- Elixir 1.14.2
+- Erlang 25.0.1
+- Phoenix 1.7.0
+- Phoenix Live View 0.18.16
+- Postgresql 15.2.1
+
+
 ## Learn more
 
   * Official website: https://www.phoenixframework.org/
