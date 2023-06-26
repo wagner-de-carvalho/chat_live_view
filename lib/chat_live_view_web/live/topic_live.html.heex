@@ -91,8 +91,8 @@
                 <!-- More messages... -->
                 </ul>
             <!-- end of our messages -->
-            <.form :let={f} for={@form} id="chat-form">
-              <.input value="" name="message" field={{f, :message}} placeholder="Enter your message" />
+            <.form :let={f} for={@form} id="chat-form" phx-change="message_change" phx-submit="submit_message">
+              <.input value={@message} name="message" field={{f, :message}} placeholder="Enter your message" />
             </.form>
           </div>
           <!-- End main area -->
