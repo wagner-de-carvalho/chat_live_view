@@ -1,0 +1,15 @@
+<div class="flex mt-40">
+  <div class="mx-auto">
+    <.form :let={f} for={@form} id="topic-form" phx-submit="goto_topic">
+      <.input
+        name="topic_name"
+        field={{f, :topic_name}}
+        value=""
+        placeholder="Enter yout topic name"
+      />
+      <div class="mt-5">
+        <.button type="submit">Join Topic</.button>
+      </div>
+    </.form>
+  </div>
+</div>
