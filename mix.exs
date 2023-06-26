@@ -62,7 +62,7 @@ defmodule ChatLiveView.MixProject do
       {:excoveralls, "~> 0.10", only: :test},
       {:sobelow, "~> 0.8", only: :dev},
       {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
-      {:anonymous_name_generator, "~> 0.1"}
+      {:anonymous_name_generator, "~> 0.1.3"}
     ]
   end
 
