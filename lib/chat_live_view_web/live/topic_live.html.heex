@@ -30,7 +30,7 @@
         <!-- Search section -->
         <div class="flex flex-1 justify-center lg:justify-end">
           <div class="w-full px-2 lg:px-6">
-            <p class="text-xl text-gray-600 font-bold px-4">Learn Phoenix 1.7 and Live View at: ProductiveProgrammer.com</p>
+            <p class="text-xl text-gray-600 font-bold px-4">Phoenix 1.7.0 and Live View</p>
           </div>
         </div>
         <!-- Links section -->
@@ -105,12 +105,15 @@
         <!-- Start right column area -->
         <div class="relative h-full" style="min-height: 16rem">
           <!-- Start whatever you want here -->
-            <h1 class="mb-4 pb-4 border-b">Currently Topic: </h1>
-            <p class="">Built by <strong>ProductiveProgrammer.com</strong></p>
+            <h1 class="mb-4 pb-4 border-b">Currently in Topic: 
+              <strong><%= Utils.StringUtils.capitalize_all(@topic_name) %></strong>
+            </h1>
+
+            <p class="">Built by <strong>github.com/wagner-de-carvalho</strong></p>
             <p><strong>Using: </strong></p>
             <img src="/images/phoenix.png" alt="pp" class="mx-auto"/>
-            <p><strong>Learn Phoenix & Elixir at: </strong></p>
-            <p class="text-xl">ProductiveProgrammer.com</p>
+            <p><strong>Phoenix & LiveView at: </strong></p>
+            <p class="text-xl">phoenixframework.org</p>
           <!-- End whatever you want here -->
         </div>
         <!-- End right column area -->
