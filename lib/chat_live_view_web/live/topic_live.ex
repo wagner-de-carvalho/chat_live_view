@@ -2,6 +2,7 @@ defmodule ChatLiveViewWeb.TopicLive do
   @moduledoc false
   use ChatLiveViewWeb, :live_view
   alias ChatLiveViewWeb.Endpoint
+  alias ChatLiveViewWeb.Presence
   alias ChatLiveViewWeb.Topics.Topic
 
   def mount(%{"topic_name" => topic_name} = _params, _session, socket) do
@@ -9,6 +10,7 @@ defmodule ChatLiveViewWeb.TopicLive do
 
     if connected?(socket) do
       Endpoint.subscribe(topic_name)
+      Presence.track(self(), topic_name, username, %{})
     end
 
     {:ok,
@@ -18,7 +20,8 @@ defmodule ChatLiveViewWeb.TopicLive do
        username: username,
        message: "",
        chat_messages: [],
-       temporary_assigns: [chat_messages: []]
+       temporary_assigns: [chat_messages: []],
+       users_online: []
      )}
   end
 
@@ -37,6 +40,15 @@ defmodule ChatLiveViewWeb.TopicLive do
 
   def handle_info(%{event: "new_message", payload: message_data}, socket) do
     {:noreply, assign(socket, chat_messages: [message_data])}
+  end
+
+  def handle_info(%{event: "presence_diff"}, socket) do
+    users_online =
+      Presence.list(socket.assigns.topic_name)
+      |> Map.keys()
+      |> Enum.with_index(1)
+
+    {:noreply, assign(socket, users_online: users_online)}
   end
 
   def user_msg_heex(assigns) do
