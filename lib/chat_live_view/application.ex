@@ -14,10 +14,12 @@ defmodule ChatLiveView.Application do
       # ChatLiveView.Repo,
       # Start the PubSub system
       {Phoenix.PubSub, name: ChatLiveView.PubSub},
-      # Start Finch
-      {Finch, name: ChatLiveView.Finch},
+      # ChatLiveViewWeb Presence
+      ChatLiveViewWeb.Presence,
       # Start the Endpoint (http/https)
-      ChatLiveViewWeb.Endpoint
+      ChatLiveViewWeb.Endpoint,
+      # Start Finch
+      {Finch, name: ChatLiveView.Finch}
       # Start a worker by calling: ChatLiveView.Worker.start_link(arg)
       # {ChatLiveView.Worker, arg}
     ]
