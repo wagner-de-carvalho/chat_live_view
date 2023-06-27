@@ -16,4 +16,12 @@ defmodule Utils.StringUtils do
     |> Stream.map(&capitalize/1)
     |> Enum.join(" ")
   end
+
+  @spec normalize(String.t()) :: String.t()
+  def normalize(term) do
+    term
+    |> String.trim()
+    |> String.replace("-", " ")
+    |> capitalize_all()
+  end
 end

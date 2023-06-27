@@ -4,9 +4,10 @@ defmodule ChatLiveViewWeb.TopicLive do
   alias ChatLiveViewWeb.Endpoint
   alias ChatLiveViewWeb.Presence
   alias ChatLiveViewWeb.Topics.Topic
+  alias Utils.StringUtils
 
   def mount(%{"topic_name" => topic_name} = _params, _session, socket) do
-    username = AnonymousNameGenerator.generate_random()
+    username = AnonymousNameGenerator.generate_random() |> StringUtils.normalize()
 
     if connected?(socket) do
       Endpoint.subscribe(topic_name)
