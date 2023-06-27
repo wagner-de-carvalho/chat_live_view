@@ -75,7 +75,9 @@
           <div class="relative h-full" style="min-height: 36rem">
             <!-- start our messages -->
                 <ul role="list" class="divide-y divide-gray-200 max-h-screen h-3/5 overflow-auto">
-                  <.user_msg_heex />
+                  <%= for message_data <- @chat_messages do %>
+                    <.user_msg_heex msg={message_data} />
+                  <% end  %>
                 <!-- More messages... -->
                 </ul>
             <!-- end of our messages -->
