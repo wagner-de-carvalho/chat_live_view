@@ -17,12 +17,13 @@ defmodule ChatLiveViewWeb.TopicLive do
        topic_name: topic_name,
        username: username,
        message: "",
-       chat_messages: []
+       chat_messages: [],
+       temporary_assigns: [chat_messages: []]
      )}
   end
 
   def handle_event("submit_message", %{"message" => message}, socket) do
-    message_data = %{msg: message, username: socket.assigns.username}
+    message_data = %{msg: message, username: socket.assigns.username, uuid: UUID.uuid4()}
 
     Endpoint.broadcast(socket.assigns.topic_name, Topic.set_topic(:new_message), message_data)
 
@@ -35,13 +36,15 @@ defmodule ChatLiveViewWeb.TopicLive do
   end
 
   def handle_info(%{event: "new_message", payload: message_data}, socket) do
-    message_data = socket.assigns.chat_messages ++ [message_data]
-    {:noreply, assign(socket, chat_messages: message_data)}
+    {:noreply, assign(socket, chat_messages: [message_data])}
   end
 
   def user_msg_heex(assigns) do
     ~H"""
-    <li class="relative bg-white py-5 px-4 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 hover:bg-gray-50">
+    <li
+      id={@msg_data.uuid}
+      class="relative bg-white py-5 px-4 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 hover:bg-gray-50"
+    >
       <div class="flex justify-between space-x-3">
         <div class="min-w-0 flex-1">
           <a href="#" class="block focus:outline-none">
