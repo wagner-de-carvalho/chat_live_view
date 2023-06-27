@@ -55,7 +55,7 @@ defmodule ChatLiveViewWeb.TopicLive do
     ~H"""
     <li
       id={@msg_data.uuid}
-      class="relative bg-white py-5 px-4 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 hover:bg-gray-50"
+      class={"relative #{if @msg_data.username == @me, do: "bg-white ml-40", else: "bg-green-300 mr-40"} mb-2 py-5 px-4 border rounded-sm"}
     >
       <div class="flex justify-between space-x-3">
         <div class="min-w-0 flex-1">
